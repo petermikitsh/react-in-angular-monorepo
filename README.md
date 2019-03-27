@@ -76,3 +76,15 @@ npm start
 ## To build the application:
 npm run build
 ```
+
+You can even :zap: **hot reload** :zap: inside the Angular server:
+
+```sh
+# in packages/react-app
+npm run watch
+
+# in a new terminal
+# in packages/angular-shell
+npm start
+```
+

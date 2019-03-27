@@ -4,15 +4,16 @@
   "description": "React, Redux, and TypeScript",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npm run build:client",
-    "build:client": "NODE_ENV=production babel src/client/ --out-dir dist/ -x .ts,.tsx --ignore **/*.d.ts",
+    "build": "NODE_ENV=production npm run build:client",
+    "build:client": "BABEL=1 babel src/client/ --out-dir dist/ -x .ts,.tsx --ignore **/*.d.ts --source-maps",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:js": "tslint --project tsconfig.json 'src/**/*.ts{,x}'",
     "start": "npm run start:client",
     "start:client": "NODE_ENV=development webpack-dev-server --env.dev --hot --config webpack.client.js",
     "start:server": "",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "NODE_ENV=development npm run build:client -- --watch"
   },
   "repository": {
     "type": "git",
@@ -43,10 +44,10 @@
     "@types/redux-devtools-log-monitor": "1.0.34",
     "babel-loader": "8.0.5",
     "babel-plugin-css-modules-transform": "1.6.2",
+    "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-define": "1.3.1",
     "core-js": "2.6.5",
     "css-loader": "2.1.1",
-    "css-modules-typescript-loader": "1.1.1",
     "html-webpack-plugin": "3.2.0",
     "redux-devtools": "3.5.0",
     "redux-devtools-dock-monitor": "1.1.3",

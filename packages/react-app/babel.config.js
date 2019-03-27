@@ -1,12 +1,13 @@
 module.exports = function (api) {
   api.cache(true);
   const prodMode = process.env.NODE_ENV === 'production';
+  const runFromBabelCLI = Boolean(process.env.BABEL);
 
   return {
     "plugins": [
       "@babel/plugin-syntax-dynamic-import",
       "react-hot-loader/babel",
-      prodMode && [
+      runFromBabelCLI && [
         "babel-plugin-css-modules-transform",
         {
           "extractCss": "./dist/styles.css",
@@ -15,7 +16,16 @@ module.exports = function (api) {
       "@babel/plugin-transform-runtime",
       ["transform-define", {
         "PRODUCTION": prodMode
-      }]
+      }],
+      !prodMode && [
+        "babel-plugin-module-resolver",
+        {
+          "root": ["."],
+          "alias": {
+              "react-dom": "@hot-loader/react-dom",
+          }
+        }
+      ]
     ].filter(Boolean),
     "presets": [
       [

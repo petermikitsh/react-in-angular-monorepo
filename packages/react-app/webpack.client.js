@@ -11,7 +11,7 @@ module.exports = function () {
     },
     devtool: 'inline-source-map',
     entry: {
-      client: path.resolve(__dirname, 'src/client/index.tsx')
+      client: path.resolve(__dirname, 'src/client/webpack.tsx')
     },
     mode: 'development',
     module: {
@@ -20,7 +20,6 @@ module.exports = function () {
           test: /\.css$/,
           use: [
             'style-loader',
-            'css-modules-typescript-loader',
             {
               loader: 'css-loader',
               options: {
@@ -53,19 +52,12 @@ module.exports = function () {
       chunkFilename: '[id].[contenthash:8].js'
     },
     plugins: [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('development'),
-        PRODUCTION: JSON.stringify(false),
-      }),
       new webpack.NamedModulesPlugin(),
       new webpack.HashedModuleIdsPlugin(),
       new HtmlWebpackPlugin(),
       new StatsWebpackPlugin('stats-client.json')
     ].filter(Boolean),
     resolve: {
-      alias: {
-        'react-dom': '@hot-loader/react-dom'
-      },
       extensions: ['.ts', '.tsx', '.js']
     },
     stats: 'minimal',
