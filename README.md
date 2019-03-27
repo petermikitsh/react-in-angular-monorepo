@@ -23,6 +23,8 @@ export default function render(container: HTMLElement) {
 The `app.component.ts` implements the `AfterViewInit` lifecycle hook. Here, we call the render function.
 
 ```js
+import ReactApp from '@demo/react-app';
+
 export class AppComponent implements AfterViewInit {
   @ViewChild('container') container;
 
