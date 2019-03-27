@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Styles from './Home.css';
 import * as CounterActions from '../actions/counter';
 
@@ -20,6 +21,9 @@ const Home = ({ count, increment, incrementAsync }: HomeProps) => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <h1 className={Styles.title}>Home</h1>
       <p>Count: { count }</p>
       <button onClick={onIncrement}>+ Increment</button>
