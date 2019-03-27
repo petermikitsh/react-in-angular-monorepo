@@ -132,5 +132,10 @@
       }
     }
   },
-  "defaultProject": "angular-wrapper"
+  "defaultProject": "angular-wrapper",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
