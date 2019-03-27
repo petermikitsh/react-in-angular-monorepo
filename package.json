@@ -1,6 +1,9 @@
 {
   "name": "@demo/root",
   "private": true,
+  "engines" : {
+    "node" : ">=10.15.0"
+  },
   "scripts": {
     "postinstall": "lerna bootstrap"
   },
