@@ -1,6 +1,9 @@
 {
-  "name": "root",
+  "name": "@demo/root",
   "private": true,
+  "scripts": {
+    "postinstall": "lerna bootstrap"
+  },
   "devDependencies": {
     "lerna": "^3.13.1"
   }
